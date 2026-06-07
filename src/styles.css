@@ -1,0 +1,378 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700;800&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+:root {
+  --ink: #243126;
+  --muted: #697463;
+  --paper: #fff8e8;
+  --leaf: #47694a;
+  --leaf-dark: #203d2b;
+  --moss: #9dad75;
+  --sun: #f1b95f;
+  --clay: #c86f4f;
+  --mist: rgba(255, 248, 232, 0.78);
+  --line: rgba(36, 49, 38, 0.13);
+  --shadow: 0 24px 70px rgba(32, 61, 43, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: 'Source Sans 3', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(241, 185, 95, 0.5), transparent 28rem),
+    linear-gradient(140deg, #f7e5bc 0%, #e8edcf 44%, #a9c2af 100%);
+}
+
+.sky {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(120deg, rgba(255,255,255,.26) 1px, transparent 1px),
+    radial-gradient(circle at 80% 12%, rgba(255,255,255,.55), transparent 9rem);
+  background-size: 42px 42px, auto;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.shell {
+  position: relative;
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.eyebrow,
+.card-label {
+  margin: 0 0 10px;
+  color: var(--clay);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  font-family: 'Alegreya', serif;
+  line-height: 0.95;
+}
+
+h1 {
+  max-width: 780px;
+  margin: 0;
+  font-size: clamp(4rem, 12vw, 9.5rem);
+  letter-spacing: -0.055em;
+}
+
+.intro {
+  max-width: 660px;
+  margin: 18px 0 0;
+  color: var(--leaf-dark);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+}
+
+.today-card,
+.detail-panel,
+.calendar {
+  border: 1px solid var(--line);
+  background: var(--mist);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+.today-card {
+  display: flex;
+  min-height: 260px;
+  padding: 26px;
+  border-radius: 32px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.today-card strong {
+  font-family: 'Alegreya', serif;
+  font-size: 3.1rem;
+  line-height: 0.95;
+}
+
+.today-card small,
+.latin,
+.bird-habitat,
+.sound-status {
+  color: var(--muted);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 170px 1fr 170px;
+  gap: 16px;
+  align-items: center;
+  margin: 34px 0 18px;
+}
+
+.controls h2 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+.nav-button,
+.sound-button {
+  border: 0;
+  border-radius: 999px;
+  color: #fffdf5;
+  background: var(--leaf-dark);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.nav-button {
+  padding: 14px 18px;
+}
+
+.sound-button {
+  width: fit-content;
+  padding: 14px 20px;
+}
+
+.sound-button.compact {
+  padding: 11px 16px;
+}
+
+.nav-button:hover,
+.sound-button:hover,
+.day:hover {
+  transform: translateY(-2px);
+}
+
+.nav-button:focus-visible,
+.sound-button:focus-visible,
+.day:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+.calendar {
+  overflow: hidden;
+  border-radius: 34px;
+}
+
+.weekdays,
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.weekdays {
+  background: rgba(71, 105, 74, 0.13);
+}
+
+.weekdays span {
+  padding: 14px;
+  color: var(--leaf-dark);
+  font-weight: 800;
+  text-align: center;
+}
+
+.days {
+  gap: 1px;
+  background: var(--line);
+}
+
+.day,
+.spacer {
+  min-height: 142px;
+  border: 0;
+  background: rgba(255, 253, 245, 0.62);
+}
+
+.day {
+  display: flex;
+  padding: 14px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.day.is-today {
+  background: rgba(241, 185, 95, 0.35);
+}
+
+.day.is-selected {
+  background: var(--leaf-dark);
+  color: #fffdf5;
+}
+
+.day.is-selected .bird-habitat {
+  color: rgba(255, 253, 245, 0.74);
+}
+
+.day-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(71, 105, 74, 0.12);
+  font-weight: 900;
+}
+
+.bird-name {
+  font-family: 'Alegreya', serif;
+  font-size: 1.28rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.bird-habitat {
+  margin-top: auto;
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
+.detail-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 28px;
+  margin-top: 24px;
+  padding: 30px;
+  border-radius: 34px;
+}
+
+.detail-copy h2 {
+  margin: 0;
+  font-size: clamp(2.7rem, 8vw, 6rem);
+}
+
+.detail-copy p {
+  max-width: 760px;
+  font-size: 1.08rem;
+}
+
+.latin {
+  margin-top: 0;
+  font-style: italic;
+}
+
+.media-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.bird-image-card,
+.sound-card {
+  display: flex;
+  padding: 24px;
+  border-radius: 26px;
+  background: rgba(255, 253, 245, 0.66);
+}
+
+.bird-image-card {
+  min-height: 250px;
+  margin: 0;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bird-image-card img {
+  width: calc(100% + 48px);
+  height: 260px;
+  margin: -24px -24px 14px;
+  object-fit: cover;
+}
+
+.bird-image-card figcaption {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.25;
+}
+
+.bird-image-card a {
+  color: var(--leaf-dark);
+  font-weight: 800;
+}
+
+.image-placeholder {
+  display: grid;
+  min-height: 200px;
+  place-items: center;
+  border: 1px dashed rgba(36, 49, 38, 0.22);
+  border-radius: 18px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.sound-card {
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+
+.sound-title {
+  margin: 0;
+  font-family: 'Alegreya', serif;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.sound-status {
+  margin: 0;
+}
+
+.source-link {
+  color: var(--leaf-dark);
+  font-weight: 800;
+}
+
+@media (max-width: 860px) {
+  .shell {
+    width: min(100% - 20px, 680px);
+    padding: 24px 0;
+  }
+
+  .hero,
+  .detail-panel,
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .controls h2 {
+    order: -1;
+  }
+
+  .weekdays,
+  .days {
+    grid-template-columns: 1fr;
+  }
+
+  .weekdays {
+    display: none;
+  }
+
+  .spacer {
+    display: none;
+  }
+
+  .day {
+    min-height: 106px;
+  }
+}

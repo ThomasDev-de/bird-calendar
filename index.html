@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vogelkalender</title>
+    <meta
+      name="description"
+      content="Ein jahreszeitlicher Vogelkalender mit Tagesvogel, Kurzporträt und Vogelstimme."
+    />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div class="sky" aria-hidden="true"></div>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">365 Tage Naturbeobachtung</p>
+          <h1>Vogelkalender</h1>
+          <p class="intro">
+            Jeden Tag ein passender Vogel zur Jahreszeit: mit Merkmalen, Beobachtungstipps
+            und einer abspielbaren Stimme über xeno-canto.
+          </p>
+        </div>
+        <aside class="today-card" id="today-card" aria-live="polite"></aside>
+      </section>
+
+      <section class="controls" aria-label="Kalendersteuerung">
+        <button class="nav-button" id="prev-month" type="button">Voriger Monat</button>
+        <h2 id="month-title"></h2>
+        <button class="nav-button" id="next-month" type="button">Nächster Monat</button>
+      </section>
+
+      <section class="calendar" aria-label="Monatskalender">
+        <div class="weekdays" aria-hidden="true">
+          <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+        </div>
+        <div class="days" id="calendar-days"></div>
+      </section>
+
+      <section class="detail-panel" id="detail-panel" aria-live="polite"></section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
