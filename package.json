@@ -6,9 +6,18 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "android:sync": "npm run build && npx cap sync android",
+    "android:open": "npx cap open android",
+    "android:apk": "npm run android:sync && cd android && ./gradlew assembleDebug",
+    "android:apk:local-jdk": "JAVA_HOME=$PWD/.jdk/java-21-jdk npm run android:apk"
   },
   "devDependencies": {
+    "@capacitor/android": "^8.4.0",
+    "@capacitor/cli": "^8.4.0",
     "vite": "^8.0.16"
+  },
+  "dependencies": {
+    "@capacitor/core": "^8.4.0"
   }
 }

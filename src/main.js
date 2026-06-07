@@ -281,7 +281,9 @@ function birdForDate(date) {
   const month = date.getMonth() + 1;
   const seasonal = birds.filter((bird) => bird.months.includes(month));
   const pool = seasonal.length > 0 ? seasonal : birds;
-  const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000);
+  const dayOfYear = Math.floor(
+    (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - Date.UTC(date.getFullYear(), 0, 0)) / 86400000
+  );
   const index = (dayOfYear * 7 + month * 11 + date.getFullYear()) % pool.length;
   return pool[index];
 }

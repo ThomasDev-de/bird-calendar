@@ -1,0 +1,8 @@
+{
+  "appId": "de.birdcalendar.app",
+  "appName": "Bird Calendar",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
